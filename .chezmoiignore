@@ -1,0 +1,12 @@
+{{- if or (ne .chezmoi.hostname "bf0-0599-lt") (ne .chezmoi.username "phil") }}
+synergy.conf
+.Xresources
+.xinitrc
+.screenlayout
+.local/share/applications/mimeapps.list
+.i3/config
+.i3
+.asoundrc
+.config/nitrogen/bg-saved.cfg
+.config/nitrogen/nitrogen.cfg
+{{- end }}
