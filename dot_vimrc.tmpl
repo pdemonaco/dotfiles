@@ -52,6 +52,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+{{- if or (eq .chezmoi.hostname "bf0-0599-lt") (eq .chezmoi.username "phil") }}
+
 " Try out YCM bro
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_confirm_extra_conf = 0
@@ -59,6 +61,8 @@ set omnifunc=syntaxcomplete#Complete
 
 " Generate a config file for YCM
 Plugin 'rdnetto/YCM-Generator'
+
+{{- end }}
 
 " Hopefully some nice markdown highlighting...
 Plugin 'gabrielelana/vim-markdown'
