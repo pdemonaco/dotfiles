@@ -1,0 +1,2 @@
+# Ensure GPG knows how to get to a tty
+export GPG_TTY=$(tty)

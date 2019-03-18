@@ -1,0 +1,21 @@
+[user]
+    email = pdemon@gmail.com
+    name = Phil DeMonaco
+	signingkey = 848712D532A54CD7
+[core]
+    editor = vim
+[color]
+    ui = true
+
+[alias]
+    co = checkout
+    ci = commit 
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color
+    type = cat-file -t
+    dump = cat-file -p
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
