@@ -1,2 +1,33 @@
+#!/bin/bash
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
+
+# SSH/SCP alias without host-key checking
+alias ssh="TERM=xterm ssh"
+alias sshno="TERM=xterm ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+alias scpno='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+# Nice shortening of a common directory listing command
+alias ll="ls -la"
+
+# Enable colors in less
+alias less="less -R"
+
+# Configure dircolors as appropriate
+DIRCOLORS=$(command -v dircolors)
+if [ -n "${DIRCOLORS}" ]
+then
+    case "${TERM}" in
+        *-256color)
+            DIRCOLOR_DB="${HOME}/.config/dircolors/dircolors.256dark"
+            ;;
+        *)
+            DIRCOLOR_DB="${HOME}/.config/dircolors/dircolors.ansi-dark"
+            ;;
+    esac
+    if [ -f "${DIRCOLOR_DB}" ]
+    then
+        # shellcheck disable=SC2046
+        eval $("${DIRCOLORS}" "${DIRCOLOR_DB}")
+    fi
+fi

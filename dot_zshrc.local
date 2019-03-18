@@ -61,6 +61,24 @@ export BROWSER="/usr/bin/firefox-bin"
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
+# Configure dircolors when we can
+DIRCOLORS=$(command -v dircolors)
+if [ -n "${DIRCOLORS}" ]
+then
+    case "${TERM}" in
+        (*-256color)
+            DIRCOLOR_DB="${HOME}/.config/dircolors/dircolors.256dark"
+            ;;
+        (*)
+            DIRCOLOR_DB="${HOME}/.config/dircolors/dircolors.ansi-dark"
+            ;;
+    esac
+    if [ -f "${DIRCOLOR_DB}" ]
+    then
+        eval $("${DIRCOLORS}" "${DIRCOLOR_DB}")
+    fi
+fi
+
 # Set VI mode by default
 setopt vi
 
