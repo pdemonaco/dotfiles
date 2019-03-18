@@ -4,10 +4,14 @@ synergy.conf
 .xinitrc
 .screenlayout
 .local/share/applications/mimeapps.list
+.local/share/applications
+.local/share
+.local
 .i3/config
 .i3
 .asoundrc
 .config/nitrogen/bg-saved.cfg
 .config/nitrogen/nitrogen.cfg
+.config/nitrogen
 .fonts.conf
 {{- end }}
