@@ -9,4 +9,5 @@ synergy.conf
 .asoundrc
 .config/nitrogen/bg-saved.cfg
 .config/nitrogen/nitrogen.cfg
+.fonts.conf
 {{- end }}
