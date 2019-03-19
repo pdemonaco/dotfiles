@@ -182,6 +182,8 @@ syntax enable
 set background=dark
 
 try
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=256
     colorscheme solarized
 catch
     colorscheme desert
@@ -194,7 +196,7 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 
-    " Don't use desert in GUI mode
+    " If we can't get solarized use elflord instead
     try
         colorscheme solarized
     catch
