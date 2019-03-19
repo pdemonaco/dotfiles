@@ -198,6 +198,8 @@ if has("gui_running")
 
     " If we can't get solarized use elflord instead
     try
+        let g:solarized_termtrans=1
+        let g:solarized_termcolors=256
         colorscheme solarized
     catch
         colorscheme elflord
