@@ -15,7 +15,9 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color
     type = cat-file -t
     dump = cat-file -p
+{{- if eq .chezmoi.hostname "bf0-0599-lt" }}
 [gpg]
 	program = gpg
 [commit]
 	gpgsign = true
+{{- end }}
