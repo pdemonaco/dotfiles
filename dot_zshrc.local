@@ -38,10 +38,15 @@ fi
 #    umask 022
 #fi
 
-# SSH/SCP alias without host-key checking
-# Note that this assumes the remote machine knows our term. 
+# SSH to hosts with shitty terminfo databases
+alias sshx='TERM=xterm ssh'
+
+# Note that regular ssh assumes the remote machine knows our term.
 # To add a new term get it's terminfo file via 
 # cp /usr/share/terminfo/${TERM:0:1}/${TERM} .terminfo/${TERM:0:1}/${TERM}
+# add it to chezmoi, and deploy
+
+# SSH/SCP alias without host-key checking
 alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias scpno='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 

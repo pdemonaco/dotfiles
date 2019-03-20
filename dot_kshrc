@@ -1,0 +1,35 @@
+#!/bin/ksh
+# SSH/SCP alias without host-key checking
+alias sshno='command ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias scpno='command scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+# Make ls default to using colors
+LS_CMD=$(command -v ls)
+# shellcheck disable=SC2139
+alias ls="${LS_CMD} --color=auto"
+
+# Nice shortening of a common directory listing command
+alias ll='ls -la'
+
+# Make less default to color mode
+alias less='command less -R'
+
+# Configure dircolors when we can
+DIRCOLORS=$(command -v dircolors)
+if [ -n "${DIRCOLORS}" ]
+then
+    echo "${TERM}" | grep 256color >/dev/null 2>&1
+    RC=$?
+    if [ "${RC}" -eq 0 ]
+    then
+        DIRCOLOR_DB="${HOME}/.config/dircolors/dircolors.256dark"
+    else
+        DIRCOLOR_DB="${HOME}/.config/dircolors/dircolors.ansi-dark"
+    fi
+
+    if [ -f "${DIRCOLOR_DB}" ]
+    then
+        # shellcheck disable=SC2046
+        eval $("${DIRCOLORS}" "${DIRCOLOR_DB}")
+    fi
+fi
