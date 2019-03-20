@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Filename:      /etc/skel/.zshrc
 # Purpose:       config file for zsh (z shell)
 # Authors:       (c) grml-team (grml.org)
@@ -76,6 +77,18 @@ then
     if [ -f "${DIRCOLOR_DB}" ]
     then
         eval $("${DIRCOLORS}" "${DIRCOLOR_DB}")
+    fi
+fi
+
+# Attempt to install vundle if it's missing
+VUNDLE_DIR="${HOME}/.vim/bundle/Vundle.vim"
+if ! [ -d "${VUNDLE_DIR}" ]
+then
+    GIT=$(command -v git)
+    if [ -n "${GIT}" ]
+    then
+        "${GIT}" clone https://github.com/VundleVim/Vundle.vim.git \
+            "${VUNDLE_DIR}"
     fi
 fi
 
