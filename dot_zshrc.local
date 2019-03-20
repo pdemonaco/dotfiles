@@ -39,8 +39,10 @@ fi
 #fi
 
 # SSH/SCP alias without host-key checking
-alias ssh="TERM=xterm ssh"
-alias sshno="TERM=xterm ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+# Note that this assumes the remote machine knows our term. 
+# To add a new term get it's terminfo file via 
+# cp /usr/share/terminfo/${TERM:0:1}/${TERM} .terminfo/${TERM:0:1}/${TERM}
+alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias scpno='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
 # Nice shortening of a common directory listing command
