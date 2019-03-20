@@ -15,7 +15,7 @@ synergy.conf
 .config/nitrogen
 .fonts.conf
 {{- end }}
-{{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel" }}
+{{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel") }}
 .tmux.conf
 .tmux.conf.local
 {{- end }}
