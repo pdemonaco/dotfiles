@@ -19,3 +19,4 @@ synergy.conf
 .tmux.conf
 .tmux.conf.local
 {{- end }}
+README.md
