@@ -38,7 +38,9 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" Notes:
+"   scripting documentation: https://devhints.io/vimscript
+"   vimrc syntax:            set ft=vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,11 +181,18 @@ set tm=500
 " Enable syntax highlighting
 syntax enable 
 
+" Detect terminal color capabilities
+let term_type=$TERM
+
 set background=dark
 
 try
     let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
+    if term_type =~ '/256/'
+        let g:solarized_termcolors=256
+    else
+        let g:solarized_termcolors=16
+    endif
     colorscheme solarized
 catch
     colorscheme desert
