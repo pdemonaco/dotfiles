@@ -216,6 +216,13 @@ if has("gui_running")
     catch
         colorscheme elflord
     endtry
+
+    " Let's try setting fonts
+    try
+        set guifont=Hack\ 10
+    catch
+        set guifont=Courier_New:h11:cDEFAULT
+    endtry
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language

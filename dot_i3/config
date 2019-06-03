@@ -35,7 +35,7 @@ exec $psst copyq
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 # font pango: M+ 1m, FontAwesome, 9
-font pango: Terminus, FontAwesome, 9
+font pango: Hack, FontAwesome, 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
