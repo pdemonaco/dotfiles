@@ -14,6 +14,8 @@ synergy.conf
 .config/nitrogen/nitrogen.cfg
 .config/nitrogen
 .fonts.conf
+.factorio/config/
+.factorio
 {{- end }}
 {{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel") }}
 .tmux.conf
