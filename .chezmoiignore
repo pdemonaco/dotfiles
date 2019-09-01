@@ -47,3 +47,6 @@ synergy.conf
 {{- end }}
 {{- end }}
 README.md
+{{- if ne .chezmoi.os "windows" }}
+Documents/PowerShell/
+{{- end }}
