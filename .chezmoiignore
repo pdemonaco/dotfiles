@@ -24,6 +24,12 @@
 .zshrc.local
 .gnupg
 synergy.conf
+{{- if ne .chezmoi.username "phil" }}
+AppData/Roaming/Avorion
+AppData/Roaming/SpaceEngineers
+AppData/Roaming/ToothAndTail
+AppData/Roaming/Factorio
+{{- end }}
 {{ else if eq .chezmoi.os "linux" }}
 {{- if or (ne .chezmoi.hostname "bf0-0599-lt") (ne .chezmoi.username "phil") }}
 synergy.conf
@@ -49,4 +55,5 @@ synergy.conf
 README.md
 {{- if ne .chezmoi.os "windows" }}
 Documents/PowerShell/
+AppData
 {{- end }}
