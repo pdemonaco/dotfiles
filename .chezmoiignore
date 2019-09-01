@@ -1,3 +1,30 @@
+{{- if eq .chezmoi.os "windows" }}
+.asoundrc
+.bash_profile
+.bashrc
+.config
+.config/dircolors
+.config/nitrogen
+.factorio
+.fonts.conf
+.i3
+.i3/config
+.kshrc
+.local
+.local/share
+.local/share/applications
+.local/share/applications/mimeapps.list
+.screenlayout
+.terminfo
+.tmux.conf
+.tmux.conf.local
+.xinitrc
+.Xresources
+.zshrc
+.zshrc.local
+.gnupg
+synergy.conf
+{{ else if eq .chezmoi.os "linux" }}
 {{- if or (ne .chezmoi.hostname "bf0-0599-lt") (ne .chezmoi.username "phil") }}
 synergy.conf
 .Xresources
@@ -10,15 +37,13 @@ synergy.conf
 .i3/config
 .i3
 .asoundrc
-.config/nitrogen/bg-saved.cfg
-.config/nitrogen/nitrogen.cfg
 .config/nitrogen
 .fonts.conf
-.factorio/config/
 .factorio
 {{- end }}
 {{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel") }}
 .tmux.conf
 .tmux.conf.local
+{{- end }}
 {{- end }}
 README.md
