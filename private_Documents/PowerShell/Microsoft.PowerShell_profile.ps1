@@ -11,16 +11,21 @@ foreach ( $solarized_file in $solarized_files ) {
 
 # Path Changes
 $env:Path += ";${home}\bin\"
+$vim_path="C:\Program Files (x86)\Vim\vim81"
 [Environment]::SetEnvironmentVariable(
     "Path",
-    [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::User) + ";C:\Program Files (x86)\Vim\vim80",
+    [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::User) + ";${vim_path}",
     [EnvironmentVariableTarget]::User)
 
 # Aliases
 New-Alias which Get-Command
-New-Alias -Name vi -Value 'C:\Program Files (x86)\vim\vim80\vim.exe'
-New-Alias -Name vim -Value 'C:\Program Files (x86)\vim\vim80\vim.exe'
+New-Alias -Name vi -Value "${vim_path}\vim.exe"
+New-Alias -Name vim -Value "${vim_path}\vim.exe"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # Chezmoi Settings
-$EDITOR="C:\Program Files (x86)\vim\vim80\vim.exe"
+$vim="${vim_path}\vim.exe"
+[Environment]::SetEnvironmentVariable(
+    "EDITOR",
+    "${vim}",
+    [EnvironmentVariableTarget]::User)
