@@ -24,7 +24,7 @@
 .zshrc.local
 .gnupg
 synergy.conf
-{{- if ne .chezmoi.username "phil" }}
+{{- if ne .chezmoi.hostname "theseus" }}
 AppData/Roaming/Avorion
 AppData/Roaming/SpaceEngineers
 AppData/Roaming/ToothAndTail

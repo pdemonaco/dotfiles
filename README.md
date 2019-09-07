@@ -11,11 +11,14 @@
   ```PowerShell
   mkdir -p "${home}\bin"
   ```
+1. Install the following pre-requisite packages
+* [git](https://git-scm.com/downloads)
+* [vim](https://www.vim.org/download.php)
 1. Download the latest release of chezmoi and put the binary in the directory listed above.
 1. Ensure gvim is installed and is included in the path. You can get this in your powershell path via
 
     ```PowerShell
-    $vim_path="C:\Program Files (x86)\vim\vim81\
+    $vim_path="C:\Program Files (x86)\vim\vim81\"
 
     # Temporary
     $env:Path += ";${vim_path}"
@@ -49,7 +52,10 @@
     ```
 1. Close and reopen powershell (it doesn't update the environment variables)
 
+### See Also
 
+* [Color Tool](https://github.com/Microsoft/Terminal/tree/master/src/tools/ColorTool)
+* [Hack Font](https://sourcefoundry.org/hack/)
 
 # Initial Setup
 
