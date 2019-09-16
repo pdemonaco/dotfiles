@@ -10,12 +10,23 @@ foreach ( $solarized_file in $solarized_files ) {
 # https://github.com/mikemaccana/powershell-profile/
 
 # Path Changes
-$env:Path += ";${home}\bin\"
 $vim_path="C:\Program Files (x86)\Vim\vim81"
-[Environment]::SetEnvironmentVariable(
-    "Path",
-    [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::User) + ";${vim_path}",
-    [EnvironmentVariableTarget]::User)
+$bin_path="${home}\bin"
+
+# Add any missing paths from our existing path value
+$new_paths = $bin_path, $vim_path
+foreach ( $new_path in $new_paths ) {
+    $current_path = [Environment]::GetEnvironmentVariable("Path",
+        [EnvironmentVariableTarget]::User)
+    $new_pattern = [regex]::Escape($new_path)
+    if ($current_path -notcontains $new_pattern) {
+        [Environment]::SetEnvironmentVariable(
+            "Path",
+            "${current_path};${new_path}",
+            [EnvironmentVariableTarget]::User)
+    }
+}
+
 
 # Aliases
 New-Alias which Get-Command
@@ -23,9 +34,11 @@ New-Alias -Name vi -Value "${vim_path}\vim.exe"
 New-Alias -Name vim -Value "${vim_path}\vim.exe"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
-# Chezmoi Settings
+# Set Default Editor (Needed for Chezmoi)
 $vim="${vim_path}\vim.exe"
-[Environment]::SetEnvironmentVariable(
-    "EDITOR",
-    "${vim}",
-    [EnvironmentVariableTarget]::User)
+if ([Environment]::GetEnvironmentVariable("EDITOR", [EnvironmentVariableTarget]::User) -ne $vim) {
+    [Environment]::SetEnvironmentVariable(
+        "EDITOR",
+        "${vim}",
+        [EnvironmentVariableTarget]::User)
+}
