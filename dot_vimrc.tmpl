@@ -224,11 +224,11 @@ if has("gui_running")
     endtry
 
     " Let's try setting fonts
-    try
-        set guifont=Hack\ 10
-    catch
-        set guifont=Courier_New:h11:cDEFAULT
-    endtry
+{{- if eq .chezmoi.os "windows" }}
+    set guifont=Hack:h10,\ Courier_New:h11:cDEFAULT
+{{- else }}
+    set guifont=Hack\ 10,\ Courier_New:h11:cDEFAULT
+{{- end }}
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
