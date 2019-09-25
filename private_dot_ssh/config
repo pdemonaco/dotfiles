@@ -5,6 +5,9 @@ Host *.arden *.ardencompanies.com *.bf0 *.demona.co 172.24.132.1 10.0.82.1 10.0.
 Host *.demona.co
     User phil
 
+Host d0-shyp????-vio?.???.arden
+    User padmin
+
 Host d0-nrtr????.???.arden d0-nsw????.???.arden d0-nrtr??.???.arden *.arden
     User pdemonaco-it1
 
