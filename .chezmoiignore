@@ -56,4 +56,5 @@ README.md
 {{- if ne .chezmoi.os "windows" }}
 Documents/PowerShell/
 AppData
+.vim/undo/.keep
 {{- end }}
