@@ -8,12 +8,13 @@
 
 1. Create a local bin directory
 
-  ```PowerShell
-  mkdir -p "${home}\bin"
-  ```
+    ```PowerShell
+    mkdir -p "${home}\bin"
+    ```
 1. Install the following pre-requisite packages
-  * [git](https://git-scm.com/downloads)
-  * [vim](https://www.vim.org/download.php)
+
+    * [git](https://git-scm.com/downloads)
+    * [vim](https://www.vim.org/download.php)
 1. Download the latest release of chezmoi and put the binary in the directory listed above.
 1. Ensure gvim is installed and is included in the path. You can get this in your powershell path via
 
