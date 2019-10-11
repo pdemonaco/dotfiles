@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "windows -}}
+git clone https://github.com/VundleVim/Vundle.vim.git %userprofile%\.vim\bundle\Vundle.vim
+vim -i NONE -c VundleUpdate -c quitall
+{{ end -}}
