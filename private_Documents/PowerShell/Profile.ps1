@@ -19,9 +19,10 @@ foreach ( $new_path in $new_paths ) {
     $current_path = [Environment]::GetEnvironmentVariable("Path",
         [EnvironmentVariableTarget]::User)
     $new_pattern = [regex]::Escape($new_path)
-    if ($current_path -notcontains $new_pattern) {
+    if ($current_path -notmatch $new_pattern) {
+        Write-Host "Adding '${new_path}' to User Path"
         [Environment]::SetEnvironmentVariable(
-            "Path",
+           "Path",
             "${current_path};${new_path}",
             [EnvironmentVariableTarget]::User)
     }
