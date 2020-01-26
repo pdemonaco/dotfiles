@@ -90,6 +90,12 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Powershell Syntax Highlighting
 Plugin 'pprovost/vim-ps1'
 
+{{- if eq .chezmoi.os "windows" }}
+" Plugins we need to install manually on windows systems
+" Puppet Syntax
+Plugin 'puppetlabs/puppet-syntax-vim'
+{{- end }}
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
