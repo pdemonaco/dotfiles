@@ -33,6 +33,7 @@ foreach ( $new_path in $new_paths ) {
 New-Alias which Get-Command
 New-Alias -Name vi -Value "${vim_path}\vim.exe"
 New-Alias -Name vim -Value "${vim_path}\vim.exe"
+New-Alias -Name gvim -Value "${vim_path}\gvim.exe"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # Set Default Editor (Needed for Chezmoi)
@@ -43,3 +44,40 @@ if ([Environment]::GetEnvironmentVariable("EDITOR", [EnvironmentVariableTarget]:
         "${vim}",
         [EnvironmentVariableTarget]::User)
 }
+
+# Change how powershell does tab completion
+# http://stackoverflow.com/questions/39221953/can-i-make-powershell-tab-complete-show-me-all-options-rather-than-picking-a-sp
+Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete
+
+# Should really be name=value like Unix version of export but not a big deal
+function export($name, $value) {
+	set-item -force -path "env:$name" -value $value;
+}
+
+function pkill($name) {
+	get-process $name -ErrorAction SilentlyContinue | stop-process
+}
+
+function pgrep($name) {
+	get-process $name
+}
+
+# Like Unix touch, creates new files and updates time on old ones
+# PSCX has a touch, but it doesn't make empty files
+Remove-Alias touch
+function touch($file) {
+	if ( Test-Path $file ) {
+		Set-FileTime $file
+	} else {
+		New-Item $file -type file
+	}
+}
+
+# From https://stackoverflow.com/questions/894430/creating-hard-and-soft-links-using-powershell
+function ln($target, $link) {
+	New-Item -ItemType SymbolicLink -Path $link -Value $target
+}
+
+set-alias new-link ln
+
+
