@@ -74,6 +74,11 @@ export BROWSER="/usr/bin/firefox-bin"
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
+{{- if and (eq .chezmoi.hostname "bf0-0599-lt") (eq .chezmoi.username "phil") }}
+# Export Github Changelog Generator API Key
+export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Generator Token").Password }}"
+{{- end }}
+
 # Configure dircolors when we can
 DIRCOLORS=$(command -v dircolors)
 if [ -n "${DIRCOLORS}" ]
