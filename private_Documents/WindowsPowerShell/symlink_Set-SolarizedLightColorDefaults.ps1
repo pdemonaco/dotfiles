@@ -1,0 +1,1 @@
+..\PowerShell\Set-SolarizedLightColorDefaults.ps1
