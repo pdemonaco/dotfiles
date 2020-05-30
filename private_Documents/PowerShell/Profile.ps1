@@ -53,7 +53,7 @@ New-Alias -Name gvim -Value "${vim_path}\gvim.exe"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # Set Default Editor (Needed for Chezmoi)
-$vim="${vim_path}\vim.exe"
+$vim="vim.exe"
 if ([Environment]::GetEnvironmentVariable("EDITOR", [EnvironmentVariableTarget]::User) -ne $vim) {
     [Environment]::SetEnvironmentVariable(
         "EDITOR",
