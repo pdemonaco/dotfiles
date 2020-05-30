@@ -57,6 +57,24 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{00000000-0000-0000-ba54-000000000002}",
+                "acrylicOpacity" : 0.75,
+                "closeOnExit" : true,
+                "colorScheme" : "Campbell",
+                "commandline" : "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l",
+                "cursorColor" : "#FFFFFF",
+                "cursorShape" : "bar",
+                "fontFace" : "Consolas",
+                "fontSize" : 10,
+                "historySize" : 9001,
+                "icon" : "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
+                "name" : "Bash",
+                "padding" : "0, 0, 0, 0",
+                "snapOnInput" : true,
+                "startingDirectory" : "%USERPROFILE%",
+                "useAcrylic" : true
             }
         ]
     },
