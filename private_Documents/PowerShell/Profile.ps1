@@ -96,4 +96,17 @@ function ln($target, $link) {
 
 set-alias new-link ln
 
-
+# Attempt to import posh-sshell and posh-git
+$modules = "posh-sshell","posh-git"
+foreach($module in $modules) {
+    try {
+        Import-Module $module `
+            -ErrorAction Stop
+        # Importing Keys
+        Start-SshAgent -Quiet
+    } catch {
+        Write-Host "${module}: missing, attempting to install!"
+        Install-Module $module -Scope CurrentUser `
+            -AllowPrerelease -Force
+    }
+}
