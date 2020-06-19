@@ -24,6 +24,7 @@ exec $psst xautolock -time 60 -locker $locker &
 exec $psst shutter --min_at_startup
 exec $psst dropbox start
 exec $psst copyq
+exec $psst insync
 #exec $psst qsynergy
 
 # Font for window titles. Will also be used by the bar unless a different font
