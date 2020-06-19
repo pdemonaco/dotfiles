@@ -1,6 +1,6 @@
 #!/bin/sh
 # If Xresources is present, load it
-[[ -f ~/.Xresources ]] && xrdb ~merge ~/.Xresources
+[ -f ~/.Xresources ] && xrdb ~merge ~/.Xresources
 
 # Trivial setting to enable video offloading
 # See https://wiki.archlinux.org/index.php/PRIME
@@ -11,13 +11,13 @@ numlockx &
 
 # Make sure D-Bus is running
 # See http://www.nurdletech.com/linux-notes/agents/keyring.html for more detail
-if [[ -z "${DBUS_SESSION_BUS_ADDRESS}" ]];
+if [ -z "${DBUS_SESSION_BUS_ADDRESS}" ]
 then
-    eval $(dbus-launch --sh-syntax --exit-with-session)
+    eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
 
 # Get gnome-keyring's variables exported
-export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
 
 # Start X without consolekit
 exec i3
