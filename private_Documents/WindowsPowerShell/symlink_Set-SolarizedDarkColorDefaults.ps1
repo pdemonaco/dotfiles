@@ -1,0 +1,1 @@
+..\PowerShell\Set-SolarizedDarkColorDefaults.ps1

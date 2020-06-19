@@ -9,8 +9,24 @@ foreach ( $solarized_file in $solarized_files ) {
 # Check this guys default's out at some point
 # https://github.com/mikemaccana/powershell-profile/
 
+# Identify vim path
+$vim_versions = @(
+    "C:\Program Files\vim\vim82",
+    "C:\Program Files (x86)\Vim\vim81"
+)
+
+foreach ( $vim in $vim_versions ) {
+    $vim_exists = Test-Path `
+        $vim `
+        -PathType Container
+
+    if ($vim_exists -eq $true) {
+        $vim_path = $vim
+        break
+    }
+}
+
 # Path Changes
-$vim_path="C:\Program Files (x86)\Vim\vim81"
 $bin_path="${home}\bin"
 
 # Add any missing paths from our existing path value
@@ -37,7 +53,7 @@ New-Alias -Name gvim -Value "${vim_path}\gvim.exe"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # Set Default Editor (Needed for Chezmoi)
-$vim="${vim_path}\vim.exe"
+$vim="vim.exe"
 if ([Environment]::GetEnvironmentVariable("EDITOR", [EnvironmentVariableTarget]::User) -ne $vim) {
     [Environment]::SetEnvironmentVariable(
         "EDITOR",
@@ -80,4 +96,17 @@ function ln($target, $link) {
 
 set-alias new-link ln
 
-
+# Attempt to import posh-sshell and posh-git
+$modules = "posh-sshell","posh-git"
+foreach($module in $modules) {
+    try {
+        Import-Module $module `
+            -ErrorAction Stop
+        # Importing Keys
+        Start-SshAgent -Quiet
+    } catch {
+        Write-Host "${module}: missing, attempting to install!"
+        Install-Module $module -Scope CurrentUser `
+            -AllowPrerelease -Force
+    }
+}

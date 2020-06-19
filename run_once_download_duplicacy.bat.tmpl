@@ -1,0 +1,3 @@
+{{ if and (eq .chezmoi.os "windows") (eq .chezmoi.username "THESEUS\\phil") -}}
+powershell.exe "Invoke-WebRequest -Uri https://github.com/gilbertchen/duplicacy/releases/download/v2.5.0/duplicacy_win_x64_2.5.0.exe -OutFile $home\bin\duplicacy.exe"
+{{ end -}}
