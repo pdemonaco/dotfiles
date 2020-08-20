@@ -1,5 +1,5 @@
 [user]
-{{- if eq .chezmoi.hostname "bf0-0599-lt" }}
+{{- if eq .chezmoi.hostname "BFM-5712" }}
     email = phil@demona.co
     name = Philip DeMonaco
 {{- else }}
@@ -24,7 +24,7 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color
     type = cat-file -t
     dump = cat-file -p
-{{- if eq .chezmoi.hostname "bf0-0599-lt" }}
+{{- if eq .chezmoi.hostname "BFM-5712" }}
 [gpg]
 	program = gpg
 [commit]

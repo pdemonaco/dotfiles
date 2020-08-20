@@ -65,7 +65,14 @@ alias ping="ping -O"
 RUBY_DIR="${HOME}/.gem/ruby/2.5.0/bin"
 if [ -d "${RUBY_DIR}" ]
 then
-        export PATH=${PATH}:${RUBY_DIR}
+    export PATH=${PATH}:${RUBY_DIR}
+fi
+
+# Add pip local packages to path if they exist
+LOCAL_BIN_DIR="${HOME}/.local/bin"
+if [ -d "${LOCAL_BIN_DIR}" ]
+then
+    export PATH=${PATH}:${LOCAL_BIN_DIR}
 fi
 
 # Store Default Browser
@@ -74,7 +81,7 @@ export BROWSER="/usr/bin/firefox-bin"
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
-{{- if and (eq .chezmoi.hostname "bf0-0599-lt") (eq .chezmoi.username "phil") }}
+{{- if and (eq .chezmoi.hostname "BFM-5712") (eq .chezmoi.username "phil") }}
 # Export Github Changelog Generator API Key
 export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Generator Token").Password }}"
 {{- end }}
