@@ -2,9 +2,8 @@
 # If Xresources is present, load it
 [ -f ~/.Xresources ] && xrdb ~merge ~/.Xresources
 
-# Trivial setting to enable video offloading
-# See https://wiki.archlinux.org/index.php/PRIME
-xrandr --setprovideroffloadsink radeon Intel
+# Turn off beeps
+xset -b
 
 # Turn on numlock
 numlockx &
