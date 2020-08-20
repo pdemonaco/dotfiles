@@ -19,10 +19,9 @@ set $dock_cmd ""
 exec $psst compton -b
 exec urxvtd --quiet --opendisplay --fork
 exec $psst nitrogen --restore
-exec $psst nm-applet &
+exec $psst nm-applet
 exec $psst xautolock -time 60 -locker $locker &
 exec $psst shutter --min_at_startup
-exec $psst dropbox start
 exec $psst copyq
 exec $psst insync
 #exec $psst qsynergy
