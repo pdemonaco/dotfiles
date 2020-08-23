@@ -18,5 +18,9 @@ fi
 # Get gnome-keyring's variables exported
 export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
 
+# Configure nvidia modesetting
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
 # Start X without consolekit
 exec i3
