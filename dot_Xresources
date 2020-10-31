@@ -77,7 +77,7 @@ URxvt*color15:               S_base3
 !-- rxvt-unicode Specific Settings --------------
 !! Turn off the scroll bar
 URxvt.scrollBar: false
-URxvt.font: xft:hack:size=9
+URxvt.font: xft:hack:size=11
 
 
 !-- Xterm Specific Settings ---------------------
