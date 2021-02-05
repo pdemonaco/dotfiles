@@ -3,3 +3,9 @@ defaults.pcm.!card 1
 defaults.ctl.!card 1
 defaults.pcm.!device 0
 defaults.ctl.!device 0
+
+pcm.GigabyteDPMonitor {
+    type hw
+    card 0
+    device 10
+}
