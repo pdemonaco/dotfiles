@@ -110,3 +110,39 @@ foreach($module in $modules) {
             -AllowPrerelease -Force
     }
 }
+
+function Get-ADPasswordStatus {
+    param(
+        [Parameter(Mandatory=$true)][String] $Identity,
+        [Parameter(Mandatory=$false)][String] $Server
+    )
+
+    $params = @{
+        Identity = $Identity
+    }
+    if($null -ne $Server) {
+        $params["Server"] = $Server
+    }
+
+    $u = Get-ADUser @params `
+        -Properties CannotChangePassword, LastBadPasswordAttempt, `
+            LastLogonDate, LockedOut, PasswordExpired, `
+            PasswordLastSet, PasswordNeverExpires, pwdLastSet, `
+            DisplayName
+    $policy = Get-ADDefaultDomainPasswordPolicy
+    $date = Get-Date
+    $expirationDate = $u.passwordLastSet.AddDays($policy.MaxPasswordAge.Days)
+    $timeRemaining = $expirationDate - $date
+    [PSCustomObject]@{
+        SamAccountName          = $u.SamAccountName
+        DisplayName             = $u.DisplayName
+        LastLogonDate           = $u.LastLogonDate
+        PasswordLastSet         = $u.PasswordLastSet
+        LastBadPasswordAttempt  = $u.LastBadPasswordAttempt
+        LockedOut               = $u.LockedOut
+        ExpirationDate          = $expirationDate
+        PasswordExpired         = $u.PasswordExpired
+        CannotChangePassword    = $u.CannotChangePassword
+        PasswordNeverExpires    = $u.PasswordNeverExpires
+    }
+}
