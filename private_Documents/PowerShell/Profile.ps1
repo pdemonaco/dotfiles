@@ -120,7 +120,7 @@ function Get-ADPasswordStatus {
     $params = @{
         Identity = $Identity
     }
-    if($null -ne $Server) {
+    if("" -ne $Server) {
         $params["Server"] = $Server
     }
 
@@ -131,8 +131,13 @@ function Get-ADPasswordStatus {
             DisplayName
     $policy = Get-ADDefaultDomainPasswordPolicy
     $date = Get-Date
-    $expirationDate = $u.passwordLastSet.AddDays($policy.MaxPasswordAge.Days)
-    $timeRemaining = $expirationDate - $date
+    if($u.PasswordNeverExpires) {
+        $expirationDate = $null
+        $remainingDays = $null
+    } else {
+        $expirationDate = $u.passwordLastSet.AddDays($policy.MaxPasswordAge.Days)
+        $remainingDays = ($expirationDate - $date).Days
+    }
     [PSCustomObject]@{
         SamAccountName          = $u.SamAccountName
         DisplayName             = $u.DisplayName
@@ -141,6 +146,7 @@ function Get-ADPasswordStatus {
         LastBadPasswordAttempt  = $u.LastBadPasswordAttempt
         LockedOut               = $u.LockedOut
         ExpirationDate          = $expirationDate
+        RemainingDays           = $remainingDays
         PasswordExpired         = $u.PasswordExpired
         CannotChangePassword    = $u.CannotChangePassword
         PasswordNeverExpires    = $u.PasswordNeverExpires
