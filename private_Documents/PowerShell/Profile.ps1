@@ -135,7 +135,11 @@ function Get-ADPasswordStatus {
         $expirationDate = $null
         $remainingDays = $null
     } else {
-        $expirationDate = $u.passwordLastSet.AddDays($policy.MaxPasswordAge.Days)
+        $expirationDate = if($null -ne $u.passwordLastSet) {
+            $u.passwordLastSet.AddDays($policy.MaxPasswordAge.Days)
+        } else {
+            $null
+        }
         $remainingDays = ($expirationDate - $date).Days
     }
     [PSCustomObject]@{
@@ -147,8 +151,27 @@ function Get-ADPasswordStatus {
         LockedOut               = $u.LockedOut
         ExpirationDate          = $expirationDate
         RemainingDays           = $remainingDays
+        Enabled                 = $u.Enabled
         PasswordExpired         = $u.PasswordExpired
         CannotChangePassword    = $u.CannotChangePassword
         PasswordNeverExpires    = $u.PasswordNeverExpires
     }
+}
+
+function Get-AdminCredential {
+    param(
+        [Parameter(Mandatory=$true)][ValidateSet("CGP","ARDEN")][String] $Domain
+    )
+    switch($Domain) {
+        ('CGP') {
+            $account = "cgp\adm_${env:USERNAME}"
+            break
+        }
+        ('ARDEN') {
+            $account = "arden\${env:USERNAME}-it0"
+            break
+        }
+    }
+
+    Get-Credential $account
 }
