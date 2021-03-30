@@ -110,3 +110,68 @@ foreach($module in $modules) {
             -AllowPrerelease -Force
     }
 }
+
+function Get-ADPasswordStatus {
+    param(
+        [Parameter(Mandatory=$true)][String] $Identity,
+        [Parameter(Mandatory=$false)][String] $Server
+    )
+
+    $params = @{
+        Identity = $Identity
+    }
+    if("" -ne $Server) {
+        $params["Server"] = $Server
+    }
+
+    $u = Get-ADUser @params `
+        -Properties CannotChangePassword, LastBadPasswordAttempt, `
+            LastLogonDate, LockedOut, PasswordExpired, `
+            PasswordLastSet, PasswordNeverExpires, pwdLastSet, `
+            DisplayName
+    $policy = Get-ADDefaultDomainPasswordPolicy
+    $date = Get-Date
+    if($u.PasswordNeverExpires) {
+        $expirationDate = $null
+        $remainingDays = $null
+    } else {
+        $expirationDate = if($null -ne $u.passwordLastSet) {
+            $u.passwordLastSet.AddDays($policy.MaxPasswordAge.Days)
+        } else {
+            $null
+        }
+        $remainingDays = ($expirationDate - $date).Days
+    }
+    [PSCustomObject]@{
+        SamAccountName          = $u.SamAccountName
+        DisplayName             = $u.DisplayName
+        LastLogonDate           = $u.LastLogonDate
+        PasswordLastSet         = $u.PasswordLastSet
+        LastBadPasswordAttempt  = $u.LastBadPasswordAttempt
+        LockedOut               = $u.LockedOut
+        ExpirationDate          = $expirationDate
+        RemainingDays           = $remainingDays
+        Enabled                 = $u.Enabled
+        PasswordExpired         = $u.PasswordExpired
+        CannotChangePassword    = $u.CannotChangePassword
+        PasswordNeverExpires    = $u.PasswordNeverExpires
+    }
+}
+
+function Get-AdminCredential {
+    param(
+        [Parameter(Mandatory=$true)][ValidateSet("CGP","ARDEN")][String] $Domain
+    )
+    switch($Domain) {
+        ('CGP') {
+            $account = "cgp\adm_${env:USERNAME}"
+            break
+        }
+        ('ARDEN') {
+            $account = "arden\${env:USERNAME}-it0"
+            break
+        }
+    }
+
+    Get-Credential $account
+}
