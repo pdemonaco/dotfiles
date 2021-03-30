@@ -19,8 +19,9 @@ fi
 export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
 
 # Configure nvidia modesetting
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --setprovideroutputsource nouveau
+#xrandr --auto
 
 # Start X without consolekit
 exec i3
