@@ -7,7 +7,6 @@
     name = Phil DeMonaco
 {{- end }}
     signingkey = B25ED9A70B6C49B4
-
 [core]
     editor = vim
 {{- if eq .chezmoi.os "windows" }}
@@ -15,7 +14,8 @@
 {{- end }}
 [color]
     ui = true
-
+[diff]
+    colorMoved = zebra
 [alias]
     co = checkout
     ci = commit 
@@ -24,6 +24,11 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color
     type = cat-file -t
     dump = cat-file -p
+[pull]
+    ff = only
+    rebase = merges
+[fetch]
+    prune = true
 {{- if eq .chezmoi.hostname "BFM-5712" }}
 [gpg]
 	program = gpg
