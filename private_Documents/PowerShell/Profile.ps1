@@ -160,18 +160,39 @@ function Get-ADPasswordStatus {
 
 function Get-AdminCredential {
     param(
-        [Parameter(Mandatory=$true)][ValidateSet("CGP","ARDEN")][String] $Domain
+        [Parameter(Mandatory=$true)][ValidateSet("CGP","ARDEN","AS")][String] $Domain
     )
     switch($Domain) {
         ('CGP') {
-            $account = "cgp\adm_${env:USERNAME}"
+            $account = "adm_${env:USERNAME}"
+            $server = "bfmdccgp01.cgp.ad.cent.com"
             break
         }
         ('ARDEN') {
-            $account = "arden\${env:USERNAME}-it0"
+            $account = "${env:USERNAME}-it0"
+            $server = "bf0-dc01.ardencompanies.com"
+            break
+        }
+        ('AS') {
+            $account = "${env:USERNAME}-it0"
+            $server = "as0-dc01.as.ardencompanies.com"
             break
         }
     }
 
-    Get-Credential $account
+    $cred = Get-Credential "${Domain}\${account}"
+
+    try {
+        Import-Module ActiveDirectory -ErrorAction Stop `
+            | Out-Null
+        Get-ADUser -Identity $account -Server $server `
+            -Credential $cred `
+            | Out-Null
+    } catch {
+        Write-Warning "Could not validate credential"
+        Write-Warning $_
+    }
+    
+    # Return the credential
+    $cred
 }
