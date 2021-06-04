@@ -28,7 +28,11 @@
     dump = cat-file -p
 [pull]
     ff = only
+{{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel") }}
+    rebase = preserve
+{{- else }}
     rebase = merges
+{{- end }}
 [fetch]
     prune = true
 {{- if eq .chezmoi.hostname "BFM-5712" }}
