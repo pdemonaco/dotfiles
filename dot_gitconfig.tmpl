@@ -28,8 +28,12 @@
     dump = cat-file -p
 [pull]
     ff = only
+{{- if eq .chezmoi.os "linux" }}
 {{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel") }}
     rebase = true 
+{{- else }}
+    rebase = merges
+{{- end }}
 {{- else }}
     rebase = merges
 {{- end }}
