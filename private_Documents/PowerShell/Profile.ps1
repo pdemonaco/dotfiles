@@ -28,9 +28,10 @@ foreach ( $vim in $vim_versions ) {
 
 # Path Changes
 $bin_path="${home}\bin"
+$pdk_path="C:\Program Files\Puppet Labs\DevelopmentKit\bin"
 
 # Add any missing paths from our existing path value
-$new_paths = $bin_path, $vim_path
+$new_paths = $bin_path, $vim_path, $pdk_path
 foreach ( $new_path in $new_paths ) {
     $current_path = [Environment]::GetEnvironmentVariable("Path",
         [EnvironmentVariableTarget]::User)
