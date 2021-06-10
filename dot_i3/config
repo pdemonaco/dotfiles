@@ -151,8 +151,8 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # dock or undock
-bindsym $mod+y exec "/home/phil/.screenlayout/17_home-nouveau-only.sh"
-bindsym $mod+Shift+y exec "/home/phil/.screenlayout/01_attached-nouveau.sh"
+bindsym $mod+y exec "/home/phil/.screenlayout/15_home-ultrawide.sh"
+bindsym $mod+Shift+y exec "/home/phil/.screenlayout/00_attached.sh"
 
 # lock the system using i3lock
 bindsym $mod+Shift+l exec xautolock -locknow
