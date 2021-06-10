@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "net"
-device = "enp0s31f6"
+device = "enp2s0f0"
 ip = true
 speed_up = false
 speed_down = false
@@ -13,7 +13,7 @@ interval = 15
 
 [[block]]
 block = "net"
-device = "enp47s0u2u1u2"
+device = "enp7s0f3u1u1u2"
 ip = true
 speed_up = false
 speed_down = false
@@ -23,7 +23,7 @@ interval = 15
 
 [[block]]
 block = "net"
-device = "wlp82s0"
+device = "wlp3s0"
 ip = true
 ssid = true
 bitrate = true
