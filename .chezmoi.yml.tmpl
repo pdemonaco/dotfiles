@@ -3,6 +3,6 @@
 {{- $mergeCommand := promptString "merge_command" }}
 merge.command: "{{ $mergeCommand }}"
 {{- end }}
-{{- if and (eq .chezmoi.hostname "BFM-5712") (eq .chezmoi.username "phil") }}
+{{- if and (eq .chezmoi.hostname "BFM-9000") (eq .chezmoi.username "phil") }}
 keepassxc.database: './Insync/pdemon@gmail.com/google-drive/key/Phil.kdbx'
 {{- end }}

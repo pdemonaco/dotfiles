@@ -1,4 +1,4 @@
 #!/bin/sh
-xrandr --output DP-0.3 --mode 2560x1440 --pos 0x0 --rotate left --output DP-0.2 --primary --mode 3440x1440 --pos 1440x808 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output HDMI-0 --off --output DP-3 --off --output eDP-1-1 --mode 1920x1080 --pos 4880x1168 --rotate normal
-sleep 3
+xrandr --output eDP --mode 1920x1080 --pos 3440x360 --rotate normal --output HDMI-A-0 --off --output DisplayPort-0 --off --output DisplayPort-1 --off --output DisplayPort-2 --off --output DisplayPort-3 --primary --mode 3440x1440 --pos 0x0 --rotate normal --output DisplayPort-4 --off
+sleep 1
 nitrogen --restore
