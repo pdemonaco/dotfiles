@@ -13,7 +13,7 @@ interval = 15
 
 [[block]]
 block = "net"
-device = "enp7s0f3u1u1u2"
+device = "enp7s0f3u1u1u1"
 ip = true
 speed_up = false
 speed_down = false
@@ -75,7 +75,7 @@ format = "{1m}"
 block = "temperature"
 collapsed = false
 format = "{min}° min, {max}° max, {average}° avg"
-chip = "coretemp-isa-*"
+chip = "k10temp-pci-*"
 interval = 10
 
 [[block]]
