@@ -81,7 +81,7 @@ export BROWSER="/usr/bin/firefox-bin"
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
-{{- if and (eq .chezmoi.hostname "BFM-9000") (eq .chezmoi.username "phil") }}
+{{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
 # Export Github Changelog Generator API Key
 export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Generator Token").Password }}"
 {{- end }}
