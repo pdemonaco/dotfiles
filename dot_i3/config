@@ -21,7 +21,7 @@ exec urxvtd --quiet --opendisplay --fork
 exec $psst nitrogen --restore
 exec $psst nm-applet
 exec $psst xautolock -time 60 -locker $locker &
-exec $psst shutter --min_at_startup
+exec $psst flameshot
 exec $psst copyq
 exec $psst insync
 #exec $psst qsynergy
@@ -56,8 +56,7 @@ bindsym $mod+XF86AudioMute exec pactl -- set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Screenshot bindings using shutter
 #bindsym Print exec shutter -a
-bindsym Print exec shutter -s
-bindsym Shift+Print exec shutter -a
+bindsym Print exec flameshot gui
 
 # Calculator binding!!
 bindsym XF86Calculator exec speedcrunch
