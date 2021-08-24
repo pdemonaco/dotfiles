@@ -67,6 +67,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+quotedbl kill
 
+# Change keyboard layout between US & Dvorak
+bindsym $mod+m exec setxkbmap dvorak
+bindsym $mod+Shift+m exec setxkbmap us
+
 # start dmenu (a program launcher)
 bindsym $mod+e exec rofi -show run -location 2 -lines 3 -width 100
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -97,7 +101,6 @@ bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Down move workspace to output down
 bindsym $mod+Shift+Up move workspace to output up
 bindsym $mod+Shift+Right move workspace to output right
-bindsym $mod+Shift+m move workspace to output eDP1
 
 # split in horizontal orientation
 bindsym $mod+d split h
