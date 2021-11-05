@@ -51,6 +51,7 @@ New-Alias which Get-Command
 New-Alias -Name vi -Value "${vim_path}\vim.exe"
 New-Alias -Name vim -Value "${vim_path}\vim.exe"
 New-Alias -Name gvim -Value "${vim_path}\gvim.exe"
+New-Alias -Name sshno -Value "$((get-command ssh).Source) -o UserKnownHostsFile=$null -o StrictHostKeyChecking=no"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # Set Default Editor (Needed for Chezmoi)
