@@ -1,4 +1,4 @@
-Host *.arden *.ardencompanies.com *.bf0 *.demona.co 172.24.132.? 10.0.82.1 10.0.66.33 10.38.8.1 172.24.196.?
+Host *.cent.com *.arden *.ardencompanies.com *.bf0 *.demona.co 172.24.132.? 10.0.82.1 10.0.66.33 10.38.8.1 172.24.196.?
     KexAlgorithms +diffie-hellman-group1-sha1
     Ciphers +3des-cbc
 
