@@ -31,7 +31,8 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "colorScheme": "Solarized Dark"
+            "colorScheme": "Solarized Dark",
+            "bellStyle": "none"
         },
         "list":
         [
