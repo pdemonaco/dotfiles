@@ -6,7 +6,7 @@
     email = pdemon@gmail.com
     name = Phil DeMonaco
 {{- end }}
-    signingkey = B25ED9A70B6C49B4
+    signingkey = 0A8364988324C284
 [core]
     editor = vim
 {{- if eq .chezmoi.os "windows" }}
@@ -41,7 +41,10 @@
     prune = true
 {{- if eq .chezmoi.hostname "BFM-5998" }}
 [gpg]
-	program = gpg
+    program = gpg
 [commit]
-	gpgsign = true
+    gpgsign = true
 {{- end }}
+[pager]
+    branch = false
+    log = false
