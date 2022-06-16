@@ -1,12 +1,10 @@
-theme = "solarized-dark"
-icons = "awesome"
+theme = "/themes/solarized-dark"
+icons = "/icons/awesome"
 
 [[block]]
 block = "net"
 device = "enp5s0"
-ip = true
-speed_up = false
-speed_down = false
+format = "{ip} {bitrate}"
 hide_inactive = true
 hide_missing = true
 interval = 15
@@ -14,9 +12,7 @@ interval = 15
 [[block]]
 block = "net"
 device = "enp7s0f3u1u1u1"
-ip = true
-speed_up = false
-speed_down = false
+format = "{ip} {bitrate}"
 hide_inactive = true
 hide_missing = true
 interval = 15
@@ -24,11 +20,7 @@ interval = 15
 [[block]]
 block = "net"
 device = "wlp3s0"
-ip = true
-ssid = true
-bitrate = true
-speed_up = false
-speed_down = false
+format = "{ssid} {signal_strength} {ip}"
 hide_inactive = true
 hide_missing = true
 interval = 15
@@ -36,7 +28,7 @@ interval = 15
 [[block]]
 block = "net"
 device = "tun0"
-ip = true
+format = "{ip}"
 hide_inactive = true
 hide_missing = true
 interval = 15
@@ -47,10 +39,8 @@ block = "sound"
 [[block]]
 block = "disk_space"
 path = "/"
-alias = "/"
 info_type = "available"
-unit = "GiB"
-interval = 20
+unit = "GB"
 warning = 20.0
 alert = 10.0
 interval = 300
@@ -58,8 +48,8 @@ interval = 300
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+format_mem = "{mem_total_used_percents}"
+format_swap = "{swap_used_percents}"
 interval = 30
 
 [[block]]
@@ -74,7 +64,7 @@ format = "{1m}"
 [[block]]
 block = "temperature"
 collapsed = false
-format = "{min}° min, {max}° max, {average}° avg"
+format = "{min}/{max}/{average} min/max/avg"
 chip = "k10temp-pci-*"
 interval = 10
 
@@ -91,5 +81,5 @@ format = "%m-%d %T"
 [[block]]
 block = "time"
 interval = 5
-format = "%m-%d %T"
+format = "%m-%d %T %Z"
 timezone = "UTC"
