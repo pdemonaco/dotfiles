@@ -65,24 +65,24 @@ bindsym XF86Calculator exec speedcrunch
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+quotedbl kill
+bindsym $mod+Shift+q kill
 
 # Change keyboard layout between US & Dvorak
 bindsym $mod+m exec setxkbmap dvorak
 bindsym $mod+Shift+m exec setxkbmap us
 
 # start dmenu (a program launcher)
-bindsym $mod+e exec rofi -show run -location 2 -lines 3 -width 100
+bindsym $mod+t exec rofi -show run -location 2 -lines 3 -width 100
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+e exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+t focus down
-bindsym $mod+n focus up
-bindsym $mod+s focus right
+bindsym $mod+n focus left
+bindsym $mod+o focus down
+bindsym $mod+e focus up
+bindsym $mod+i focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -91,10 +91,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+H move left
-bindsym $mod+Shift+T move down
-bindsym $mod+Shift+N move up
-bindsym $mod+Shift+S move right
+bindsym $mod+Shift+N move left
+bindsym $mod+Shift+O move down
+bindsym $mod+Shift+E move up
+bindsym $mod+Shift+I move right
 
 #  you can use the cursor keys to move the entire workspace
 bindsym $mod+Shift+Left move workspace to output left
@@ -106,13 +106,13 @@ bindsym $mod+Shift+Right move workspace to output right
 bindsym $mod+d split h
 
 # split in vertical orientation
-bindsym $mod+k split v
+bindsym $mod+r split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+u fullscreen
+bindsym $mod+g fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+o layout stacking
+bindsym $mod+l layout stacking
 bindsym $mod+comma layout tabbed
 bindsym $mod+period layout toggle split
 
@@ -153,8 +153,8 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # dock or undock
-bindsym $mod+y exec "/home/phil/.screenlayout/15_home-ultrawide.sh"
-bindsym $mod+Shift+y exec "/home/phil/.screenlayout/00_attached.sh"
+bindsym $mod+w exec "/home/phil/.screenlayout/15_home-ultrawide.sh"
+bindsym $mod+Shift+w exec "/home/phil/.screenlayout/00_attached.sh"
 
 # lock the system using i3lock
 bindsym $mod+Shift+l exec xautolock -locknow
@@ -164,7 +164,7 @@ bindsym $mod+Shift+J reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+P restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+greater exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+u exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -174,10 +174,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym t resize grow height 10 px or 10 ppt
-        bindsym n resize shrink height 10 px or 10 ppt
-        bindsym s resize grow width 10 px or 10 ppt
+        bindsym n resize shrink width 10 px or 10 ppt
+        bindsym e resize grow height 10 px or 10 ppt
+        bindsym o resize shrink height 10 px or 10 ppt
+        bindsym i resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
