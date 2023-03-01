@@ -12,6 +12,11 @@
 {{- if eq .chezmoi.os "windows" }}
     sshCommand = C:/OpenSSH-Win64/ssh.exe
 {{- end }}
+{{- if eq .chezmoi.hostname "BFM-5998" }}
+    pager = "diff-so-fancy | less --tabs=4 -RFX"
+[interactive]
+    diffFilter = "diff-so-fancy --patch"
+{{- end }}
 [color]
     ui = true
 [diff]
