@@ -1,5 +1,5 @@
-theme = "/themes/solarized-dark"
-icons = "/icons/awesome"
+theme = "solarized-dark"
+icons = "awesome"
 
 [[block]]
 block = "net"
