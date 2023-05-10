@@ -23,5 +23,7 @@ export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
 #xrandr --setprovideroutputsource nouveau
 #xrandr --auto
 
+set enable-bracketed-paste off
+
 # Start X without consolekit
 exec i3
