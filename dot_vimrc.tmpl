@@ -79,7 +79,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'momota/cisco.vim'
 
 " Static analysis and linter 
-Plugin 'vim-syntastic/syntastic'
+Plugin 'dense-analysis/ale'
 
 " Puppet Template Format 
 Plugin 'rudexi/vim-epp'
@@ -461,16 +461,17 @@ map <leader>pp :setlocal paste!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic https://github.com/vim-syntastic/syntastic
+" => ALE https://github.com/dense-analysis/ale
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+let g:ale_completion_enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
