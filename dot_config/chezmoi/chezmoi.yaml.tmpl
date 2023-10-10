@@ -1,0 +1,9 @@
+---
+{{- if eq .chezmoi.os "windows" }}
+merge:
+  command: 'C:\Program Files (x86)\Vim\vim82\diff.exe'
+{{- end }}
+{{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
+keepassxc:
+  database: '/home/phil/syncthing/personal/key/Phil.kdbx'
+{{- end }}

@@ -46,7 +46,7 @@
     prune = true
 {{- if eq .chezmoi.hostname "BFM-5998" }}
 [gpg]
-    program = gpg
+    program = /usr/bin/gpg
 [commit]
     gpgsign = true
 {{- end }}

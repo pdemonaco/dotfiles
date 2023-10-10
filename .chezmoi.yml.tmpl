@@ -1,8 +1,0 @@
----
-{{- if eq .chezmoi.os "windows" }}
-{{- $mergeCommand := promptString "merge_command" }}
-merge.command: "{{ $mergeCommand }}"
-{{- end }}
-{{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
-keepassxc.database: './Insync/pdemon@gmail.com/google-drive/key/Phil.kdbx'
-{{- end }}
