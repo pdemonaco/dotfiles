@@ -22,6 +22,9 @@ Host *.arden
 Host *.ardencompanies.com *.bf0 *.nix *.sap *.qa *.dev *.cent.com !??-?????-????-???.cent.com !??-?????-mdf-???.cent.com
     User pdemonaco
 
+Host haos1.demona.co
+    PubkeyAuthentication no
+
 Host mft.central.com
     HostkeyAlgorithms +ssh-rsa
     PubkeyAcceptedKeyTypes +ssh-rsa
