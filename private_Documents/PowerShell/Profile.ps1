@@ -12,6 +12,7 @@ foreach ( $solarized_file in $solarized_files ) {
 # Identify vim path
 $vim_versions = @(
     "C:\Program Files\vim\vim82",
+    "C:\Program Files (x86)\Vim\vim82",
     "C:\Program Files (x86)\Vim\vim81"
 )
 
@@ -29,9 +30,10 @@ foreach ( $vim in $vim_versions ) {
 # Path Changes
 $bin_path="${home}\bin"
 $pdk_path="C:\Program Files\Puppet Labs\DevelopmentKit\bin"
+$android_platform_path = "${HOME}\AppData\Local\Android\Sdk\platform-tools"
 
 # Add any missing paths from our existing path value
-$new_paths = $bin_path, $vim_path, $pdk_path
+$new_paths = $bin_path, $vim_path, $pdk_path, $android_platform_path
 foreach ( $new_path in $new_paths ) {
     $current_path = [Environment]::GetEnvironmentVariable("Path",
         [EnvironmentVariableTarget]::User)
@@ -105,7 +107,7 @@ foreach($module in $modules) {
         Import-Module $module `
             -ErrorAction Stop
         # Importing Keys
-        Start-SshAgent -Quiet
+        #Start-SshAgent -Quiet
     } catch {
         Write-Host "${module}: missing, attempting to install!"
         Install-Module $module -Scope CurrentUser `
@@ -197,4 +199,13 @@ function Get-AdminCredential {
     
     # Return the credential
     $cred
+}
+
+# Set Android Home variable
+$android_home = "${HOME}\AppData\Local\Android\Sdk"
+if ([Environment]::GetEnvironmentVariable("ANDROID_HOME", [EnvironmentVariableTarget]::User) -ne $android_home) {
+    [Environment]::SetEnvironmentVariable(
+        "ANDROID_HOME",
+        "${android_home}",
+        [EnvironmentVariableTarget]::User)
 }
