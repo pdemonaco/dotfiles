@@ -75,6 +75,24 @@ then
     export PATH=${PATH}:${LOCAL_BIN_DIR}
 fi
 
+# Add android studio path if it exists
+ANDROID_HOME="${HOME}/Android/Sdk"
+if [ -d "${ANDROID_HOME}" ]
+then
+    export ANDROID_HOME="${ANDROID_HOME}"
+    export PATH="${PATH}:${ANDROID_HOME}/emulator"
+    export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
+fi
+
+# Override npm location
+NPM_HOME="${HOME}/.npm_packages"
+if [ -d "${NPM_HOME}" ]
+then
+    export PATH="${PATH}:${NPM_HOME}/bin"
+    export MANPATH="${MANPATH}:${NPM_HOME}/share/man"
+    export NODE_PATH="${NODE_PATH}:${NPM_HOME}/lib/node_modules"
+fi
+
 # Store Default Browser
 export BROWSER="/usr/bin/firefox-bin"
 
