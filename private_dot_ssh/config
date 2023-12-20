@@ -1,6 +1,5 @@
 Host *.cent.com *.arden *.ardencompanies.com *.bf0 *.demona.co 172.24.132.? 10.0.82.1 10.0.66.33 10.38.8.1 172.24.196.?
-    KexAlgorithms +diffie-hellman-group1-sha1
-    KexAlgorithms +diffie-hellman-group14-sha1
+    KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
     HostkeyAlgorithms +ssh-rsa
     Ciphers +3des-cbc
 
@@ -12,8 +11,7 @@ Host d0-shyp????-vio?.???.arden
 
 host ??-?????-????-???.cent.com ??-?????-???-???.cent.com d0-nrtr????.???.arden d0-nsw????.???.arden d0-nrtr??.???.arden
     User adm_pdemonaco
-    KexAlgorithms +diffie-hellman-group1-sha1
-    KexAlgorithms +diffie-hellman-group14-sha1
+    KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
     HostkeyAlgorithms +ssh-rsa
 
 Host *.arden
