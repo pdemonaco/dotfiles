@@ -84,5 +84,5 @@ URxvt.font: xft:hack:size=11
 xterm*saveLines: 2000
 
 ! PRIMARY and Clipboard 
-XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+! XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
 
