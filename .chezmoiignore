@@ -2,9 +2,10 @@
 .asoundrc
 .bash_profile
 .bashrc
-.config
 .config/dircolors
+.config/flameshot
 .config/nitrogen
+.config/private_pudb
 .factorio
 .fonts.conf
 .i3
