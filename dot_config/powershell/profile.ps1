@@ -9,31 +9,13 @@ foreach ( $solarized_file in $solarized_files ) {
 # Check this guys default's out at some point
 # https://github.com/mikemaccana/powershell-profile/
 
-# Identify vim path
-$vim_versions = @(
-    "C:\Program Files\vim\vim82",
-    "C:\Program Files (x86)\Vim\vim82",
-    "C:\Program Files (x86)\Vim\vim81"
-)
-
-foreach ( $vim in $vim_versions ) {
-    $vim_exists = Test-Path `
-        $vim `
-        -PathType Container
-
-    if ($vim_exists -eq $true) {
-        $vim_path = $vim
-        break
-    }
-}
-
 # Path Changes
 $bin_path="${home}\bin"
 $pdk_path="C:\Program Files\Puppet Labs\DevelopmentKit\bin"
 $android_platform_path = "${HOME}\AppData\Local\Android\Sdk\platform-tools"
 
 # Add any missing paths from our existing path value
-$new_paths = $bin_path, $vim_path, $pdk_path, $android_platform_path
+$new_paths = $bin_path, $pdk_path, $android_platform_path
 foreach ( $new_path in $new_paths ) {
     $current_path = [Environment]::GetEnvironmentVariable("Path",
         [EnvironmentVariableTarget]::User)
@@ -50,9 +32,14 @@ foreach ( $new_path in $new_paths ) {
 
 # Aliases
 New-Alias which Get-Command
-New-Alias -Name vi -Value "${vim_path}\vim.exe"
-New-Alias -Name vim -Value "${vim_path}\vim.exe"
-New-Alias -Name gvim -Value "${vim_path}\gvim.exe"
+'gvim','vim' | foreach-Object {
+    $c = $_
+    New-Alias -Name $c -Value (Get-Command "${c}").Source
+}
+New-Alias -Name vi -Value (
+    Get-Command -Name vim -CommandType Application `
+        | Select-Object -First 1
+    ).Source
 New-Alias -Name sshno -Value "$((get-command ssh).Source) -o UserKnownHostsFile=$null -o StrictHostKeyChecking=no"
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
