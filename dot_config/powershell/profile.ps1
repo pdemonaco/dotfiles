@@ -31,16 +31,17 @@ foreach ( $new_path in $new_paths ) {
 
 
 # Aliases
-New-Alias which Get-Command
-'gvim','vim' | foreach-Object {
-    $c = $_
-    New-Alias -Name $c -Value (Get-Command "${c}").Source
+$alias_map = @{
+   'which' = 'Get-Command'
+   'gvim'  = "$((Get-Command 'gvim.exe').Source)"
+   'vim'   = "$((Get-Command 'vim.exe').Source)"
+   'vi'    = "$((Get-Command 'vim.exe').Source)"
+   'sshno' = "$((get-command ssh).Source) -o UserKnownHostsFile=$null -o StrictHostKeyChecking=no"
 }
-New-Alias -Name vi -Value (
-    Get-Command -Name vim -CommandType Application `
-        | Select-Object -First 1
-    ).Source
-New-Alias -Name sshno -Value "$((get-command ssh).Source) -o UserKnownHostsFile=$null -o StrictHostKeyChecking=no"
+foreach($a in $alias_map.GetEnumerator()) {
+    New-Alias -Name $a.Name -Value $a.Value
+}
+
 Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # Set Default Editor (Needed for Chezmoi)
