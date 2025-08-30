@@ -1,6 +1,7 @@
 Host *.cent.com *.arden *.ardencompanies.com *.bf0 *.demona.co 172.24.132.? 10.0.82.1 10.0.66.33 10.38.8.1 172.24.196.?
     KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
     HostkeyAlgorithms +ssh-rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
     Ciphers +3des-cbc
 
 Host *.demona.co
@@ -26,3 +27,23 @@ Host haos1.demona.co
 Host mft.central.com
     HostkeyAlgorithms +ssh-rsa
     PubkeyAcceptedKeyTypes +ssh-rsa
+
+Host cgpsqrx.central.com
+    User snapqrx
+    IdentityFile ~/.ssh/snapqrx_rsa-4096
+    IdentitiesOnly yes
+
+Host cgpsqas.central.com
+    User snapqas
+    IdentityFile ~/.ssh/snapqas_rsa-3072
+    IdentitiesOnly yes
+
+Host cgpsprd.central.com
+    User snapprd
+    IdentityFile ~/.ssh/snapprd_rsa-3072
+    IdentitiesOnly yes
+
+Host cgpsqa2.central.com
+    User snapqa2
+    IdentityFile ~/.ssh/snapqa2_rsa-4096
+    IdentitiesOnly yes

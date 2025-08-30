@@ -41,8 +41,8 @@ font pango: Hack, FontAwesome, 9
 floating_modifier $mod
 
 # Monitor brightness control keys for raising and lowering brightness
-bindsym XF86MonBrightnessUp exec xbacklight -time 0 -steps 1 -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -time 0 -steps 1 -dec 10
+bindsym XF86MonBrightnessUp exec light -s sysfs/backlight/amdgpu_bl0 -A 5
+bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/amdgpu_bl0 -U 5
 
 # Multimedia keys for raising/lowering volume and muting
 # Output volume and mute controls
@@ -55,6 +55,7 @@ bindsym $mod+XF86AudioLowerVolume exec pactl -- set-source-volume @DEFAULT_SOURC
 bindsym $mod+XF86AudioMute exec pactl -- set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Screenshot bindings using shutter
+
 #bindsym Print exec shutter -a
 bindsym Print exec flameshot gui
 
