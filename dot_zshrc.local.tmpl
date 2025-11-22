@@ -95,15 +95,18 @@ then
     export NODE_PATH="${NODE_PATH}:${NPM_HOME}/lib/node_modules"
 fi
 
-# Store Default Browser
-export BROWSER="/usr/bin/brave-bin"
-
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
 {{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
 # Export Github Changelog Generator API Key
 export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Generator Token").Password }}"
+
+# Store Default Browser
+export BROWSER="/usr/bin/brave-bin"
+
+# Ask gnome for the ssh keyring
+export $(gnome-keyring-daemon --start --components=ssh)
 {{- end }}
 
 # Configure dircolors when we can
@@ -135,9 +138,6 @@ then
             "${VUNDLE_DIR}"
     fi
 fi
-
-# Ask gnome for the ssh keyring
-export $(gnome-keyring-daemon --start --components=ssh)
 
 # Set VI mode by default
 setopt vi
