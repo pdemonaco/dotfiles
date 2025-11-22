@@ -1,4 +1,0 @@
-
-[Default Applications]
-x-scheme-handler/http=firefox-bin.desktop;
-x-scheme-handler/https=firefox-bin.desktop;
