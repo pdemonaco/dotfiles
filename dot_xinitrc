@@ -16,7 +16,8 @@ then
 fi
 
 # Get gnome-keyring's variables exported
-export "$(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)"
+# shellcheck disable=SC2046
+export $(gnome-keyring-daemon --start --components=pkcs11,secrets,gpg,ssh)
 
 # Start X without consolekit
 exec i3

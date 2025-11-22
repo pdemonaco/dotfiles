@@ -136,6 +136,9 @@ then
     fi
 fi
 
+# Ask gnome for the ssh keyring
+export $(gnome-keyring-daemon --start --components=ssh)
+
 # Set VI mode by default
 setopt vi
 
