@@ -1,18 +1,13 @@
 [user]
-{{- if eq .chezmoi.hostname "BFM-5998" }}
     email = phil@demona.co
     name = Philip DeMonaco
-{{- else }}
-    email = pdemon@gmail.com
-    name = Phil DeMonaco
-{{- end }}
     signingkey = 697794DB1550B5D4
 [core]
     editor = vim
 {{- if eq .chezmoi.os "windows" }}
     sshCommand = C:/OpenSSH-Win64/ssh.exe
 {{- end }}
-{{- if eq .chezmoi.hostname "BFM-5998" }}
+{{- if (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) }}
     pager = "diff-so-fancy | less --tabs=4 -RFX"
 [interactive]
     diffFilter = "diff-so-fancy --patch"
@@ -44,7 +39,7 @@
 {{- end }}
 [fetch]
     prune = true
-{{- if eq .chezmoi.hostname "BFM-5998" }}
+{{- if (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) }}
 [gpg]
     program = /usr/bin/gpg
 [commit]

@@ -20,6 +20,8 @@ application/x-remmina=org.remmina.Remmina.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-SHMR00.desktop
 x-scheme-handler/eclipse+command=_opt_dbeaver-ce_.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
 
 [Added Associations]
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;

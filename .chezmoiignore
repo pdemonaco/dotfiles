@@ -32,7 +32,7 @@ AppData/Roaming/ToothAndTail
 AppData/Roaming/Factorio
 {{- end }}
 {{ else if eq .chezmoi.os "linux" }}
-{{- if or (ne .chezmoi.hostname "BFM-5998") (ne .chezmoi.username "phil") }}
+{{- if or (and (ne .chezmoi.hostname "BFM-5998") (ne .chezmoi.hostname "theseus")) (ne .chezmoi.username "phil") }}
 synergy.conf
 .Xresources
 .xinitrc

@@ -98,7 +98,7 @@ fi
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
-{{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
+{{- if and (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) (eq .chezmoi.username "phil") }}
 # Export Github Changelog Generator API Key
 export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Generator Token").Password }}"
 
@@ -445,7 +445,7 @@ zmodload zsh/datetime
 #getanames ()  { perl -ne 'while ( m/a name="([^"]*)"/gc ) { print $1, "\n"; }' $* }
 #getforms ()   { perl -ne 'while ( m:(\</?(input|form|select|option).*?\>):gic ) { print $1, "\n"; }' $* }
 #getstrings () { perl -ne 'while ( m/"(.*?)"/gc ) { print $1, "\n"; }' $*}
-#getanchors () { perl -ne 'while ( m/«([^«»\n]+)»/gc ) { print $1, "\n"; }' $* }
+#getanchors () { perl -ne 'while ( m/<AB>([^<AB><BB>\n]+)<BB>/gc ) { print $1, "\n"; }' $* }
 #showINC ()    { perl -e 'for (@INC) { printf "%d %s\n", $i++, $_ }' }
 #vimpm ()      { vim `perldoc -l $1 | sed -e 's/pod$/pm/'` }
 #vimhelp ()    { vim -c "help $1" -c on -c "au! VimEnter *" }

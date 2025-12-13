@@ -3,7 +3,7 @@
 merge:
   command: 'C:\tools\vim\vim91\diff.exe'
 {{- end }}
-{{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
+{{- if and (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) (eq .chezmoi.username "phil") }}
 keepassxc:
   database: '/home/phil/secrets/Phil.kdbx'
 {{- end }}

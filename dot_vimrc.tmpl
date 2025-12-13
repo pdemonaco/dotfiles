@@ -57,7 +57,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-{{- if and (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.username "phil") }}
+{{- if and (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) (eq .chezmoi.username "phil") }}
 
 " Try out YCM bro
 Plugin 'Valloric/YouCompleteMe'
