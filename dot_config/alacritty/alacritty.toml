@@ -1,3 +1,0 @@
-[terminal]
-shell.program = 'C:\Program Files\PowerShell\7\pwsh.exe'
-shell.args = ["-WorkingDirectory ~"]

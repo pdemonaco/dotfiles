@@ -1,0 +1,6 @@
+[terminal]
+{{- if eq .chezmoi.os "windows" }}
+shell.program = 'C:\Program Files\PowerShell\7\pwsh.exe'
+{{- else }}
+shell.program = '/usr/bin/pwsh'
+{{- end }}
