@@ -1,16 +1,16 @@
 [Default Applications]
-x-scheme-handler/http=brave-bin.desktop
-x-scheme-handler/https=brave-bin.desktop
-x-scheme-handler/ftp=brave-bin.desktop
-x-scheme-handler/chrome=brave-bin.desktop
-text/html=brave-bin.desktop
-application/x-extension-htm=brave-bin.desktop
-application/x-extension-html=brave-bin.desktop
-application/x-extension-shtml=brave-bin.desktop
-application/xhtml+xml=brave-bin.desktop
-application/x-extension-xhtml=brave-bin.desktop
-application/x-extension-xht=brave-bin.desktop
-x-scheme-handler/mailto=brave-bin.desktop
+x-scheme-handler/http=brave-browser.desktop
+x-scheme-handler/https=brave-browser.desktop
+x-scheme-handler/ftp=brave-browser.desktop
+x-scheme-handler/chrome=brave-browser.desktop
+text/html=brave-browser.desktop
+application/x-extension-htm=brave-browser.desktop
+application/x-extension-html=brave-browser.desktop
+application/x-extension-shtml=brave-browser.desktop
+application/xhtml+xml=brave-browser.desktop
+application/x-extension-xhtml=brave-browser.desktop
+application/x-extension-xht=brave-browser.desktop
+x-scheme-handler/mailto=brave-browser.desktop
 x-scheme-handler/discord-418794856081653760=discord-418794856081653760.desktop
 x-scheme-handler/rdp=org.remmina.Remmina.desktop
 x-scheme-handler/spice=org.remmina.Remmina.desktop
@@ -22,6 +22,8 @@ x-scheme-handler/eclipse+command=_opt_dbeaver-ce_.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 x-scheme-handler/sgnl=signal.desktop
 x-scheme-handler/signalcaptcha=signal.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
 
 [Added Associations]
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;
