@@ -8,6 +8,7 @@ icons = "awesome4"
 block = "external_ip"
 format = "$ip $asn"
 interval = 300
+{{- if eq .chezmoi.hostname "BFM-5998" }}
 
 [[block]]
 block = "net"
@@ -38,6 +39,15 @@ device = "tun0"
 format = "$icon $ip"
 interval = 15
 
+{{- else if eq .chezmoi.hostname "theseus" }}
+
+[[block]]
+block = "net"
+device = "enp39s0"
+format = "$icon $ip $speed_down.eng(prefix:M)"
+interval = 15
+
+{{- end }}
 [[block]]
 block = "disk_space"
 path = "/"
@@ -69,6 +79,13 @@ block = "temperature"
 format = "$icon $average avg, $max max"
 chip = "k10temp-pci-*"
 interval = 10
+{{- if eq .chezmoi.hostname "theseus" }}
+
+[[block]]
+block = "nvidia_gpu"
+interval = 1
+format = " $icon GTX 1070 $utilization $temperature $clocks "
+{{- end }}
 
 [[block]]
 block = "time"
@@ -84,11 +101,13 @@ timezone = "UTC"
 [block.format]
 full  = "$icon $timestamp.datetime(f:'%m-%d %T %Z')"
 short = "$icon $timestamp.datetime(f:%R)"
+{{- if eq .chezmoi.hostname "BFM-5998" }}
 
 [[block]]
 block = "battery"
 interval = 60
 format = "$icon $percentage"
+{{- end }}
 
 [[block]]
 block = "sound"
