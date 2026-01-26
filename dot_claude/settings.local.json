@@ -1,0 +1,10 @@
+"hooks": {
+  "PreToolUse": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        { "command": "bash .claude/scripts/validate-bash.sh" }
+      ]
+    }
+  ]
+}

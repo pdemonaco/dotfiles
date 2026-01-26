@@ -103,7 +103,7 @@ export GPG_TTY=$(tty)
 export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Generator Token").Password }}"
 
 # Store Default Browser
-export BROWSER="/usr/bin/brave-bin"
+export BROWSER="/usr/bin/brave-browser-stable"
 
 # Ask gnome for the ssh keyring
 export $(gnome-keyring-daemon --start --components=ssh)
