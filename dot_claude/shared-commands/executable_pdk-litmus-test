@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+SCRIPT_NAME=$(basename "${0}")
+
+if [ -z "$1" ]; then
+    echo "Error: Acceptance test file path required"
+    echo "Usage: ${SCRIPT_NAME} <test_file_path>"
+    exit 1
+fi
+
+TEST="$1"
+
+if [ ! -f "$TEST" ]; then
+    echo "Error: Test file not found: ${TEST}"
+    exit 1
+fi
+
+echo "Running test: $TEST"
+HOSTS=$(yq '(.groups[] | .targets[] | .alias )' spec/fixtures/litmus_inventory.yaml)
+
+for H in $HOSTS; do
+    echo "Testing on host: ${H}"
+    TARGET_HOST="${H}" pdk bundle exec rspec "${TEST}"
+    echo "---"
+done

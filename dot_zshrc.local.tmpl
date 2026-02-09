@@ -95,6 +95,13 @@ then
     export NODE_PATH="${NODE_PATH}:${NPM_HOME}/lib/node_modules"
 fi
 
+# Claude Scripts
+CLAUDE_SCRIPTS="${HOME}/.claude/shared-commands"
+if [ -d "${CLAUDE_SCRIPTS}" ]
+then
+    export PATH="${PATH}:${CLAUDE_SCRIPTS}"
+fi
+
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
