@@ -68,16 +68,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# Change keyboard layout between US & Dvorak
-bindsym $mod+m exec setxkbmap dvorak
-bindsym $mod+Shift+m exec setxkbmap us
-
-# start dmenu (a program launcher)
+# start rofi (a program launcher)
 bindsym $mod+t exec rofi -show run -location 2 -lines 3 -width 100
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+e exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+n focus left
@@ -152,10 +144,12 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+{{- if eq .chezmoi.hostname "BFM-5988" }}
 
 # dock or undock
 bindsym $mod+w exec "/home/phil/.screenlayout/15_home-2x27.sh"
 bindsym $mod+Shift+w exec "/home/phil/.screenlayout/00_attached.sh"
+{{- end }}
 
 # lock the system using i3lock
 bindsym $mod+Shift+l exec xautolock -locknow

@@ -82,9 +82,10 @@ interval = 10
 {{- if eq .chezmoi.hostname "theseus" }}
 
 [[block]]
-block = "nvidia_gpu"
+block = "amd_gpu"
 interval = 1
-format = " $icon GTX 1070 $utilization $temperature $clocks "
+format = " $icon  RX9070XT $utilization "
+format_alt = " $icon  MEM $vram_used_percents ($vram_used/$vram_total) "
 {{- end }}
 
 [[block]]
