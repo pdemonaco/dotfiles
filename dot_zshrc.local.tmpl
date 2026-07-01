@@ -49,9 +49,10 @@ alias sshx='TERM=xterm ssh'
 # SSH/SCP alias without host-key checking
 alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias sshxno='sshx -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias sshpwd='ssh -o PubkeyAuthentication=no'
+alias sshxpwd='sshx -o PubkeyAuthentication=no'
 alias scpno='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias sftpno='sftp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias sshpwd='ssh -o PubkeyAuthentication=no'
 alias sftppwd='sftp -o PubkeyAuthentication=no'
 
 # Nice shortening of a common directory listing command
