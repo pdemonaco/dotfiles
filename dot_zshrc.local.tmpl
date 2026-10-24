@@ -103,6 +103,17 @@ then
     export PATH="${PATH}:${CLAUDE_SCRIPTS}"
 fi
 
+# go bin
+GO_BIN="$(command -v go)"
+if [ -n $GO_BIN ]
+then
+    GO_BIN_HOME="$(go env GOBIN)"
+    if [ -d "${GO_BIN_HOME}" ]
+    then
+        export PATH="${PATH}:${GO_BIN_HOME}"
+    fi
+fi
+
 # Ensure GPG knows how to get to a tty
 export GPG_TTY=$(tty)
 
