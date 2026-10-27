@@ -104,8 +104,7 @@ then
 fi
 
 # go bin
-GO_BIN="$(command -v go)"
-if [ -n $GO_BIN ]
+if (( $+commands[go] ))
 then
     GO_BIN_HOME="$(go env GOBIN)"
     if [ -d "${GO_BIN_HOME}" ]
