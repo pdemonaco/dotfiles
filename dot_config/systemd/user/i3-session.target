@@ -1,0 +1,6 @@
+# ~/.config/systemd/user/i3-session.target
+[Unit]
+Description=i3 X session
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
