@@ -8,6 +8,9 @@ savePath=/home/phil/screenshot
 savePathFixed=true
 showStartupLaunchMessage=true
 startupLaunch=true
+{{- if eq .chezmoi.hostname "theseus" }}
+useX11LegacyScreenshot=true
+{{- end }}
 
 [Shortcuts]
 TYPE_ARROW=A
