@@ -1,23 +1,15 @@
 #!/bin/sh
-# If Xresources is present, load it
-[ -f ~/.Xresources ] && xrdb ~merge ~/.Xresources
-
-# Turn off beeps
+[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 xset -b
-
-# Turn on numlock
 numlockx &
 
-# Make sure D-Bus is running
-# See http://www.nurdletech.com/linux-notes/agents/keyring.html for more detail
-if [ -z "${DBUS_SESSION_BUS_ADDRESS}" ]
-then
-    eval "$(dbus-launch --sh-syntax --exit-with-session)"
-fi
+# give the X display to systemd user units and D-Bus-activated services
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP=i3
 
-# Get gnome-keyring's variables exported
+# keyring (secrets/pkcs11/gpg); drop ",ssh" if using gcr-ssh-agent
 # shellcheck disable=SC2046
-export $(gnome-keyring-daemon --start --components=pkcs11,secrets,gpg,ssh)
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"    # adjust to whichever agent you chose
 
-# Start X without consolekit
-exec i3
+systemctl --user start i3-session.target
+i3
+systemctl --user stop i3-session.target
