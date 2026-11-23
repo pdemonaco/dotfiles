@@ -42,7 +42,7 @@ fi
 alias sshx='TERM=xterm ssh'
 
 # Note that regular ssh assumes the remote machine knows our term.
-# To add a new term get it's terminfo file via 
+# To add a new term get it's terminfo file via
 # cp /usr/share/terminfo/${TERM:0:1}/${TERM} .terminfo/${TERM:0:1}/${TERM}
 # add it to chezmoi, and deploy
 
@@ -102,6 +102,8 @@ if [ -d "${CLAUDE_SCRIPTS}" ]
 then
     export PATH="${PATH}:${CLAUDE_SCRIPTS}"
 fi
+
+export CLAUDE_CODE_DISABLE_MOUSE=1
 
 # go bin
 if (( $+commands[go] ))
