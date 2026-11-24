@@ -20,7 +20,7 @@
     defaultBranch = master
 [alias]
     co = checkout
-    ci = commit 
+    ci = commit
     st = status
     br = branch
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --color
@@ -30,7 +30,7 @@
     ff = only
 {{- if eq .chezmoi.os "linux" }}
 {{- if or (eq .chezmoi.osRelease.id "centos") (eq .chezmoi.osRelease.id "rhel") }}
-    rebase = true 
+    rebase = true
 {{- else }}
     rebase = merges
 {{- end }}
@@ -39,7 +39,7 @@
 {{- end }}
 [fetch]
     prune = true
-{{- if (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) }}
+{{- if and (or (eq .chezmoi.hostname "BFM-5998") (eq .chezmoi.hostname "theseus")) (eq .chezmoi.username "phil") }}
 [gpg]
     program = /usr/bin/gpg
 [commit]
