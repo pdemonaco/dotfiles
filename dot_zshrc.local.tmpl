@@ -125,8 +125,8 @@ export CHANGELOG_GITHUB_TOKEN="{{ (keepassxc "github : api-key : Changelog Gener
 # Store Default Browser
 export BROWSER="/usr/bin/brave-browser-stable"
 
-# Ask gnome for the ssh keyring
-export $(gnome-keyring-daemon --start --components=ssh)
+# gcr's ssh agent, socket-activated by the systemd user manager
+[ -S "$XDG_RUNTIME_DIR/gcr/ssh" ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 {{- end }}
 
 # Configure dircolors when we can
